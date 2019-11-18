@@ -1,4 +1,4 @@
-import { THEME } from '../../../constants';
+import { THEME } from '../../constants';
 
 const btnDefaultAttribute = {
   alignItems: 'center',
@@ -10,6 +10,7 @@ const btnDefaultAttribute = {
   fontSize: 20,
   height: 52,
   justifyContent: 'center',
+  marginBottom: 5,
   maxWidth: 200,
   position: 'relative',
   textAlign: 'center',
@@ -47,8 +48,8 @@ const btnHoverEffect = {
 };
 
 const renderButton = (color, background, border = false) => ({
-  color,
-  background,
+  color: [color, '!important'],
+  background: [background, '!important'],
   border: !border ? 'none' : `3px solid ${color}`,
 });
 
@@ -58,12 +59,21 @@ export default {
   },
   default: {
     ...renderButton(THEME.color.black70, THEME.color.white, true),
+    '&.reverse': {
+      ...renderButton(THEME.color.white, THEME.color.black70),
+    },
   },
   primary: {
     ...renderButton(THEME.color.white, THEME.color.primary),
+    '&.reverse': {
+      ...renderButton(THEME.color.primary, THEME.color.white, true),
+    },
   },
   secondary: {
     ...renderButton(THEME.color.white, THEME.color.secondary),
+    '&.reverse': {
+      ...renderButton(THEME.color.secondary, THEME.color.white, true),
+    },
   },
   gradient: {
     ...renderButton(
@@ -72,5 +82,8 @@ export default {
         linear-gradient(135deg,${THEME.color.primary}, ${THEME.color.secondary})
       `,
     ),
+    '&.reverse': {
+      ...renderButton(THEME.color.primary, THEME.color.white, true),
+    },
   },
 };

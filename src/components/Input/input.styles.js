@@ -1,4 +1,4 @@
-import { THEME } from '../../../constants';
+import { THEME } from '../../constants';
 
 const btnDefaultAttribute = {
   alignItems: 'center',
